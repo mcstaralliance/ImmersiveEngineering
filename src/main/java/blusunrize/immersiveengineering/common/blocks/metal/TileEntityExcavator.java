@@ -282,7 +282,7 @@ public class TileEntityExcavator extends TileEntityMultiblockMetal<TileEntityExc
 					if(!itemstack.isEmpty())
 						items.add(itemstack);
 
-					ForgeEventFactory.fireBlockHarvesting(items, world, pos, blockstate, 0, 1.0f, true, fakePlayer);
+				//	ForgeEventFactory.fireBlockHarvesting(items, world, pos, blockstate, 0, 1.0f, true, fakePlayer);
 
 					for(int i = 0; i < items.size(); i++)
 						if(i!=0)
@@ -296,7 +296,7 @@ public class TileEntityExcavator extends TileEntityMultiblockMetal<TileEntityExc
 				}
 				else
 				{
-					block.harvestBlock(world, fakePlayer, pos, blockstate, world.getTileEntity(pos), ItemStack.EMPTY);
+			//		block.harvestBlock(world, fakePlayer, pos, blockstate, world.getTileEntity(pos), ItemStack.EMPTY);
 					world.playEvent(2001, pos, Block.getStateId(blockstate));
 				}
 			}
