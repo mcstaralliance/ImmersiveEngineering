@@ -211,48 +211,6 @@ public class TileEntityExcavator extends TileEntityMultiblockMetal<TileEntityExc
 
 	ItemStack digBlocksInTheWay(TileEntityBucketWheel wheel)
 	{
-		BlockPos pos = wheel.getPos().add(0, -4, 0);
-		ItemStack s = digBlock(pos);
-		if(!s.isEmpty())
-			return s;
-		//Backward 1
-		s = digBlock(pos.offset(facing, -1));
-		if(!s.isEmpty())
-			return s;
-		//Backward 2
-		s = digBlock(pos.offset(facing, -2));
-		if(!s.isEmpty())
-			return s;
-		//Forward 1
-		s = digBlock(pos.offset(facing, 1));
-		if(!s.isEmpty())
-			return s;
-		//Forward 2
-		s = digBlock(pos.offset(facing, 2));
-		if(!s.isEmpty())
-			return s;
-
-		//Backward+Sides
-		s = digBlock(pos.offset(facing, -1).offset(facing.rotateY()));
-		if(!s.isEmpty())
-			return s;
-		s = digBlock(pos.offset(facing, -1).offset(facing.rotateYCCW()));
-		if(!s.isEmpty())
-			return s;
-		//Center Sides
-		s = digBlock(pos.offset(facing.rotateY()));
-		if(!s.isEmpty())
-			return s;
-		s = digBlock(pos.offset(facing.rotateYCCW()));
-		if(!s.isEmpty())
-			return s;
-		//Forward+Sides
-		s = digBlock(pos.offset(facing, 1).offset(facing.rotateY()));
-		if(!s.isEmpty())
-			return s;
-		s = digBlock(pos.offset(facing, 1).offset(facing.rotateYCCW()));
-		if(!s.isEmpty())
-			return s;
 		return ItemStack.EMPTY;
 	}
 
