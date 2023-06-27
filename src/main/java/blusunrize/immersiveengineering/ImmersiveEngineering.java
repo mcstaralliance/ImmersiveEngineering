@@ -92,7 +92,7 @@ public class ImmersiveEngineering
 		IEApi.prefixToIngotMap.put("fence", new Integer[]{5, 3});
 		IECompatModule.doModulesPreInit();
 
-		new ThreadContributorSpecialsDownloader();
+		//new ThreadContributorSpecialsDownloader();
 
 		IEContent.preInitEnd();
 	}
