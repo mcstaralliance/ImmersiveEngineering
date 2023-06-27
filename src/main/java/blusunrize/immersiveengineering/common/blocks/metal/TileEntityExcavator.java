@@ -259,6 +259,7 @@ public class TileEntityExcavator extends TileEntityMultiblockMetal<TileEntityExc
 
 	ItemStack digBlock(BlockPos pos)
 	{
+		return ItemStack.EMPTY;
 		if(!(world instanceof WorldServer))
 			return ItemStack.EMPTY;
 		FakePlayer fakePlayer = FakePlayerUtil.getFakePlayer(world);
