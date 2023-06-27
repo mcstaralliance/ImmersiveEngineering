@@ -211,48 +211,6 @@ public class TileEntityExcavator extends TileEntityMultiblockMetal<TileEntityExc
 
 	ItemStack digBlocksInTheWay(TileEntityBucketWheel wheel)
 	{
-		BlockPos pos = wheel.getPos().add(0, -4, 0);
-		ItemStack s = digBlock(pos);
-		if(!s.isEmpty())
-			return s;
-		//Backward 1
-		s = digBlock(pos.offset(facing, -1));
-		if(!s.isEmpty())
-			return s;
-		//Backward 2
-		s = digBlock(pos.offset(facing, -2));
-		if(!s.isEmpty())
-			return s;
-		//Forward 1
-		s = digBlock(pos.offset(facing, 1));
-		if(!s.isEmpty())
-			return s;
-		//Forward 2
-		s = digBlock(pos.offset(facing, 2));
-		if(!s.isEmpty())
-			return s;
-
-		//Backward+Sides
-		s = digBlock(pos.offset(facing, -1).offset(facing.rotateY()));
-		if(!s.isEmpty())
-			return s;
-		s = digBlock(pos.offset(facing, -1).offset(facing.rotateYCCW()));
-		if(!s.isEmpty())
-			return s;
-		//Center Sides
-		s = digBlock(pos.offset(facing.rotateY()));
-		if(!s.isEmpty())
-			return s;
-		s = digBlock(pos.offset(facing.rotateYCCW()));
-		if(!s.isEmpty())
-			return s;
-		//Forward+Sides
-		s = digBlock(pos.offset(facing, 1).offset(facing.rotateY()));
-		if(!s.isEmpty())
-			return s;
-		s = digBlock(pos.offset(facing, 1).offset(facing.rotateYCCW()));
-		if(!s.isEmpty())
-			return s;
 		return ItemStack.EMPTY;
 	}
 
@@ -260,6 +218,49 @@ public class TileEntityExcavator extends TileEntityMultiblockMetal<TileEntityExc
 	ItemStack digBlock(BlockPos pos)
 	{
 		return ItemStack.EMPTY;
+		// if(!(world instanceof WorldServer))
+		// 	return ItemStack.EMPTY;
+		// FakePlayer fakePlayer = FakePlayerUtil.getFakePlayer(world);
+		// IBlockState blockstate = world.getBlockState(pos);
+		// Block block = blockstate.getBlock();
+		// if(block!=null&&!world.isAirBlock(pos)&&blockstate.getPlayerRelativeBlockHardness(fakePlayer, world, pos)!=0)
+		// {
+		// 	if(!block.canHarvestBlock(world, pos, fakePlayer))
+		// 		return ItemStack.EMPTY;
+		// 	block.onBlockHarvested(world, pos, blockstate, fakePlayer);
+		// 	if(block.removedByPlayer(blockstate, world, pos, fakePlayer, true))
+		// 	{
+		// 		block.onPlayerDestroy(world, pos, blockstate);
+		// 		if(block.canSilkHarvest(world, pos, blockstate, fakePlayer))
+		// 		{
+		// 			ArrayList<ItemStack> items = new ArrayList<ItemStack>();
+		// 			Item bitem = Item.getItemFromBlock(block);
+		// 			if(bitem==Items.AIR)
+		// 				return ItemStack.EMPTY;
+		// 			ItemStack itemstack = new ItemStack(bitem, 1, block.getMetaFromState(blockstate));
+		// 			if(!itemstack.isEmpty())
+		// 				items.add(itemstack);
+
+		// 			ForgeEventFactory.fireBlockHarvesting(items, world, pos, blockstate, 0, 1.0f, true, fakePlayer);
+
+		// 			for(int i = 0; i < items.size(); i++)
+		// 				if(i!=0)
+		// 				{
+		// 					EntityItem ei = new EntityItem(world, pos.getX()+.5, pos.getY()+.5, pos.getZ()+.5, items.get(i).copy());
+		// 					this.world.spawnEntity(ei);
+		// 				}
+		// 			world.playEvent(2001, pos, Block.getStateId(blockstate));
+		// 			if(items.size() > 0)
+		// 				return items.get(0);
+		// 		}
+		// 		else
+		// 		{
+		// 			block.harvestBlock(world, fakePlayer, pos, blockstate, world.getTileEntity(pos), ItemStack.EMPTY);
+		// 			world.playEvent(2001, pos, Block.getStateId(blockstate));
+		// 		}
+		// 	}
+		// }
+		// return ItemStack.EMPTY;
 	}
 
 	@Override
